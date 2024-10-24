@@ -29,7 +29,7 @@ def add_mathjax_support(html_content):
     else:
         html_content = f'<head>{mathjax_head}</head>\n{html_content}'
     
-    print(html_content)  # Print the final HTML content for debugging
+    #print(html_content)  # Print the final HTML content for debugging
     
     return html_content
 

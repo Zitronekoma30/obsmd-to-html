@@ -10,7 +10,7 @@ def check_for_changes(md_path, file_ids):
     for root, _, files in os.walk(md_path):
         for file in files:
             if file.endswith(".md"):
-                full_path_to_file = os.path.abspath(file)
+                full_path_to_file = md_path + os.sep + file
                 new_file_ids.append(generate_dynamic_id(full_path_to_file))
     for key in file_ids:
         if key not in new_file_ids:
@@ -19,9 +19,14 @@ def check_for_changes(md_path, file_ids):
             return True
     return False
 
+class CustomHTTPRequestHandler(SimpleHTTPRequestHandler):
+    def end_headers(self):
+        self.send_header('Content-Type', 'text/html; charset=utf-8')
+        super().end_headers()
+
 def serve_output_html(output_path, md_path, file_ids):
     os.chdir(output_path)
-    httpd = HTTPServer(('localhost', 80), SimpleHTTPRequestHandler)
+    httpd = HTTPServer(('localhost', 80), CustomHTTPRequestHandler)
     print(f"Serving HTTP on localhost port 80 (http://localhost:80/) ...")
     
     while True:
@@ -38,6 +43,12 @@ def generate_dynamic_id(file_path):
     return hashlib.md5(hash_input).hexdigest()
 
 def convert_all_md_files(output_path, md_path):
+    # remove all files in output path
+    for root, _, files in os.walk(output_path):
+        for file in files:
+            os.remove(output_path + os.sep + file)
+    
+    # Convert all md files to html
     file_dynamic_ids = {}
     for root, _, files in os.walk(md_path):
         for file in files:
@@ -60,3 +71,6 @@ if __name__ == "__main__":
 
     # convert md files to html
     ids = convert_all_md_files(output_path, md_path)
+
+    # serve html files
+    serve_output_html(output_path, md_path, ids)

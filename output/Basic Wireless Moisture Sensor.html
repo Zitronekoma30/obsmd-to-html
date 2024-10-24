@@ -1,4 +1,68 @@
 <head>
+    <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+<style>
+    body {
+        margin: 0;
+        padding: 20px;
+        min-height: 100vh;
+        line-height: 1.6;
+        font-family: Consolas, "Liberation Mono", Monaco, "Courier New", monospace;
+        background-color: #1a1412;
+        color: #f4eee8;
+        display: flex;
+        justify-content: center;
+    }
+
+    .container {
+        max-width: 800px;
+        width: 100%;
+        padding: 40px;
+        background-color: #231815;
+        border-radius: 8px;
+        box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    a {
+        color: #e6d5a7;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: #f0e3c0;
+        text-decoration: underline;
+    }
+
+    h1 {
+        margin: 0.2em 0 0.1em 0;
+    }
+
+    h2, h3, h4, h5, h6 {
+        color: #f0e3c0;
+        margin: 0.1em 0 0.03em 0;  /* Very compact spacing */
+        font-family: Consolas, monospace;
+        letter-spacing: 0.5px;
+    }
+
+    ul {
+        padding-left: 20px;
+        margin-top: 0.5em;    /* Added to reduce space after headings when followed by lists */
+        margin-bottom: 0.5em;
+    }
+
+    li {
+        margin-bottom: 0.5em;
+    }
+
+    pre, code {
+        font-family: Consolas, monospace;
+        background-color: #2a1f1c;
+        padding: 2px 5px;
+        border-radius: 3px;
+    }
+</style>
+     
     <script>
         window.MathJax = {
             tex: {
@@ -14,7 +78,7 @@
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
     </head>
-<h1>Requirements</h1>
+<div class="container"><h1>Requirements</h1>
 <ul>
 <li><a href="https://www.reichelt.at/at/de/shop/produkt/arduino_uno_rev4_wifi_ra4m1_esp32-s3-353108?PROVID=2807&amp;q=/at/de/shop/arduino-uno-rev4-wifi-ra4m1-esp32-s3-ard-uno-r4-wifi-p353108.html">Arduino Uno WIFI</a> 25€</li>
 <li>instead: esp8266 or esp32 6€</li>
@@ -43,4 +107,4 @@ Cost: ~78.33€s</li>
 <p>Build the solar to battery setup and use it to power the ESP32</p>
 <h2>Phase 3</h2>
 <p>Switch the server to a raspberry pi with a similar / identical solar setup and figure out long distance data transfer.</p>
-<p>$$\frac{x^2}{2}$$</p>
+<p>$$\frac{x^2}{2}$$</p></div>

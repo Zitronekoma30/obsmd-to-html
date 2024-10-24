@@ -1,0 +1,46 @@
+<head>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [ ['$','$'] ],
+                displayMath: [['$$', '$$']],
+                processEscapes: true, 
+                processEnvironments: true
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre']
+            }
+        };
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script>
+    </head>
+<h1>Requirements</h1>
+<ul>
+<li><a href="https://www.reichelt.at/at/de/shop/produkt/arduino_uno_rev4_wifi_ra4m1_esp32-s3-353108?PROVID=2807&amp;q=/at/de/shop/arduino-uno-rev4-wifi-ra4m1-esp32-s3-ard-uno-r4-wifi-p353108.html">Arduino Uno WIFI</a> 25€</li>
+<li>instead: esp8266 or esp32 6€</li>
+<li><a href="https://www.reichelt.at/at/de/shop/produkt/raspberry_pi_4_b_4x_1_5_ghz_1_gb_ram_wlan_bt-259874?PROVID=2807&amp;q=/at/de/shop/raspberry-pi-4-b-4x-1-5-ghz-1-gb-ram-wlan-bt-rasp-pi-4-b-1gb-p259874.htmlopen-modal-image-big-slider">Raspberry Pi</a> 40€</li>
+<li><a href="https://www.reichelt.at/at/de/shop/produkt/entwicklerboards_-_feuchtesensor_bodenfeuchte_-223620?PROVID=2807&amp;q=/at/de/shop/entwicklerboards-feuchtesensor-bodenfeuchte--debo-cap-sens-p223620.html">Capacitor Moisture Sensor</a> 3€</li>
+<li><a href="https://www.mediamarkt.at/de/product/_tp-link-tl-sf1005d-netzwerk-switch-5port-1179045.html">Router</a> 10€</li>
+<li><a href="https://www.berrybase.at/kabel-mit-jst-xh-2.54mm-steckverbinder-awg26-20cm?sPartner=g_shopping_at">Extra Cables</a> 0.33€
+Cost: ~78.33€s</li>
+</ul>
+<p>```
+[ Solar Panel ]
+     | 
+     V
+[TP4056 (charge controller)] &lt;-&gt; [Battery]
+     |
+     V
+[Boost Converter (MT3608)]
+     |
+     V
+[Micro-USB to ESP32]</p>
+<p>```</p>
+<h1>Plan</h1>
+<h2>Phase 1</h2>
+<p>Build the ESP32 + moisture sensor setup and power it via micro-usb, run the server on my pc or my home server.</p>
+<h2>Phase 2</h2>
+<p>Build the solar to battery setup and use it to power the ESP32</p>
+<h2>Phase 3</h2>
+<p>Switch the server to a raspberry pi with a similar / identical solar setup and figure out long distance data transfer.</p>
+<p>$$\frac{x^2}{2}$$</p>

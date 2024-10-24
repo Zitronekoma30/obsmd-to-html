@@ -1,6 +1,6 @@
-import markdown 
-from sys import argv
+import markdown
 import re
+import os
 
 def add_mathjax_support(html_content):
     """Add MathJax support with $ for inline and $$ for display math."""
@@ -40,19 +40,28 @@ def remove_unwanted_hashes(text):
     text = re.sub(r'#(\S+)', r'\1', text)
     return text
 
-md = argv[1]
 
-with open(md, "r", encoding="utf-8") as input_file:
-    text = input_file.read()
+def md_to_html(path, output_path=None):
+    with open(path, "r", encoding="utf-8") as input_file:
+        text = input_file.read()
 
-# Md processing
-text = remove_unwanted_hashes(text)
+    # Md processing
+    text = remove_unwanted_hashes(text)
 
+    # html processing
+    html = markdown.markdown(text)
+    html = add_mathjax_support(html)
+    
+    md_file_name = path.split(os.sep)[-1]
+    if output_path is not None:
+        output = f"{output_path}{os.sep}{md_file_name.split('.')[0]}.html"
+        # save html file
+        with open(output, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
+            output_file.write(html)
+        return output
 
-# html processing
-html = markdown.markdown(text)
-html = add_mathjax_support(html)
-
-# save html file
-with open(f"{md.split(".")[0]}.html", "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
-    output_file.write(html)
+    output = f"{path.split(".")[0]}.html"
+    # save html file
+    with open(output, "w", encoding="utf-8", errors="xmlcharrefreplace") as output_file:
+        output_file.write(html)
+    return output
